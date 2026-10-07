@@ -1,0 +1,23 @@
+/* Custom Smooth Scroll & Scrollbar */
+::-webkit-scrollbar { 
+    width: 8px; 
+}
+
+::-webkit-scrollbar-track { 
+    background: #FBF9F5; 
+}
+
+::-webkit-scrollbar-thumb { 
+    background: #D4A373; 
+    border-radius: 4px; 
+}
+
+/* Product Card Hover Effect */
+.product-card { 
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1); 
+}
+
+.product-card:hover { 
+    transform: translateY(-5px); 
+    box-shadow: 0 12px 24px -8px rgba(58, 50, 38, 0.12); 
+}

@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dondonedip - Artisan Bakery & Patisserie</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            bg: '#FBF9F5',
+                            card: '#FFFFFF',
+                            primary: '#D4A373',
+                            secondary: '#CCD5AE',
+                            accent: '#FAEDCD',
+                            dark: '#3A3226',
+                            muted: '#8C8275',
+                            pink: '#F4C2C2',
+                            terracotta: '#BC6C25'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts: Playfair Display for headers, Poppins for body -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Link External CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-brand-bg text-brand-dark font-sans antialiased min-h-screen flex flex-col selection:bg-brand-pink selection:text-brand-dark">
+
+    <!-- Toast Notification Container -->
+    <div id="toast-container" class="fixed bottom-6 right-6 z-50 flex flex-col space-y-3 pointer-events-none"></div>
+
+    <!-- Header & Sticky Navbar -->
+    <header class="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-stone-200/60 shadow-xs">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Brand Logo -->
+            <a href="#" class="flex items-center space-x-3 group">
+                <div class="w-11 h-11 rounded-2xl bg-brand-accent flex items-center justify-center text-brand-terracotta text-xl shadow-inner group-hover:scale-105 transition">
+                    🍰
+                </div>
+                <div>
+                    <span class="text-2xl font-serif font-bold tracking-tight text-brand-dark block leading-none">Dondonedip</span>
+                    <span class="text-[10px] text-brand-muted font-semibold tracking-widest uppercase mt-1 block">Artisan Pastry & Cakes</span>
+                </div>
+            </a>
+
+            <!-- Navigation Links (Desktop) -->
+            <nav class="hidden md:flex items-center space-x-8 font-medium text-sm text-stone-600">
+                <a href="#beranda" class="hover:text-brand-terracotta transition">Beranda</a>
+                <a href="#menu" class="hover:text-brand-terracotta transition">Menu</a>
+                <a href="#tentang" class="hover:text-brand-terracotta transition">Tentang</a>
+                <a href="#kontak" class="hover:text-brand-terracotta transition">Kontak</a>
+            </nav>
+
+            <!-- Action Buttons -->
+            <div class="flex items-center space-x-3">
+                <button id="cart-btn" class="relative bg-brand-accent/60 hover:bg-brand-accent text-brand-dark px-4 py-2.5 rounded-2xl font-medium transition flex items-center space-x-2 border border-brand-accent">
+                    <i class="fa-solid fa-cart-shopping text-brand-terracotta"></i>
+                    <span class="hidden sm:inline text-sm">Keranjang</span>
+                    <span id="cart-count" class="absolute -top-1.5 -right-1.5 bg-brand-terracotta text-white text-xs font-bold w-5 h-5 rounded-full flex items-center justify-center shadow-sm">0</span>
+                </button>
+
+                <!-- Hamburger Menu Button (Mobile) -->
+                <button id="menu-toggle" class="md:hidden w-10 h-10 rounded-2xl bg-stone-100 hover:bg-stone-200 flex items-center justify-center text-brand-dark transition">
+                    <i class="fa-solid fa-bars text-lg"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Menu Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-stone-200 px-6 py-4 space-y-3 shadow-lg">
+            <a href="#beranda" class="block font-medium text-stone-700 hover:text-brand-terracotta py-1">Beranda</a>
+            <a href="#menu" class="block font-medium text-stone-700 hover:text-brand-terracotta py-1">Menu</a>
+            <a href="#tentang" class="block font-medium text-stone-700 hover:text-brand-terracotta py-1">Tentang</a>
+            <a href="#kontak" class="block font-medium text-stone-700 hover:text-brand-terracotta py-1">Kontak</a>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-16">
+        
+        <!-- Hero Section -->
+        <section id="beranda" class="relative bg-gradient-to-br from-brand-accent/40 via-white to-brand-pink/20 p-8 sm:p-14 rounded-3xl border border-stone-200/60 shadow-sm overflow-hidden flex flex-col md:flex-row items-center justify-between gap-8">
+            <div class="relative z-10 max-w-xl text-center md:text-left">
+                <span class="inline-block bg-brand-primary/15 text-brand-terracotta text-xs font-semibold px-3 py-1.5 rounded-full mb-4 tracking-wide">
+                    ✨ Freshly Baked Everyday in Malang
+                </span>
+                <h1 class="text-3xl sm:text-5xl font-serif font-bold tracking-tight mb-4 text-brand-dark leading-tight">
+                    Maniskan Harimu dengan Kreasi Patisserie Terbaik
+                </h1>
+                <p class="text-brand-muted mb-8 text-sm sm:text-base leading-relaxed">
+                    Nikmati kelezatan kue, pastry renyah, dan hidangan penutup premium yang diracik sepenuh hati menggunakan bahan-bahan pilihan berkualitas tinggi.
+                </p>
+                <div class="flex flex-wrap items-center justify-center md:justify-start gap-4">
+                    <a href="#menu" class="bg-brand-terracotta hover:bg-[#a65d1f] text-white px-7 py-3.5 rounded-2xl font-semibold text-sm shadow-md hover:shadow-lg transition flex items-center space-x-2">
+                        <span>Jelajahi Menu</span>
+                        <i class="fa-solid fa-arrow-down text-xs"></i>
+                    </a>
+                    <a href="https://wa.me/6282141558477?text=Halo%20Dondonedip,%20saya%20ingin%20bertanya%20mengenai%20menu%20dessert%20hari%20ini." target="_blank" class="bg-white hover:bg-stone-50 text-brand-dark border border-stone-200 px-6 py-3.5 rounded-2xl font-semibold text-sm shadow-sm transition flex items-center space-x-2">
+                        <i class="fa-brands fa-whatsapp text-emerald-600 text-lg"></i>
+                        <span>Tanya Admin</span>
+                    </a>
+                </div>
+            </div>
+            <div class="relative w-full max-w-md aspect-square rounded-3xl overflow-hidden shadow-xl border-4 border-white">
+                <img src="donedip.jpeg" alt="Dondonedip Signature Desserts" class="w-full h-full object-cover">
+            </div>
+        </section>
+
+        <!-- Menu Section -->
+        <section id="menu">
+            <div class="text-center max-w-xl mx-auto mb-10">
+                <h2 class="text-3xl font-serif font-bold text-brand-dark mb-2">Katalog Menu Manis</h2>
+                <p class="text-brand-muted text-sm">Pilih hidangan favoritmu, pesan langsung dengan mudah dan cepat.</p>
+            </div>
+
+            <!-- Search and Filter Bar -->
+            <div class="flex flex-col md:flex-row items-center justify-between gap-4 mb-8">
+                <!-- Category Filters Pill -->
+                <div id="category-filters" class="flex items-center overflow-x-auto w-full md:w-auto pb-2 md:pb-0 space-x-2 scrollbar-none">
+                    <!-- Injected dynamically via JS -->
+                </div>
+
+                <!-- Search Input -->
+                <div class="relative w-full md:w-80">
+                    <span class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-stone-400">
+                        <i class="fa-solid fa-search text-xs"></i>
+                    </span>
+                    <input type="text" id="search-input" placeholder="Cari kue, tart, atau minuman..." 
+                        class="w-full pl-10 pr-4 py-2.5 bg-white border border-stone-200 rounded-2xl focus:outline-none focus:ring-2 focus:ring-brand-primary/50 text-sm shadow-xs transition">
+                </div>
+            </div>
+
+            <!-- Products Grid Header Status -->
+            <div class="flex items-center justify-between mb-6">
+                <h3 id="catalog-subtitle" class="font-semibold text-stone-700 text-base">Semua Produk</h3>
+                <span id="product-count" class="text-xs text-brand-muted font-medium">Memuat...</span>
+            </div>
+
+            <!-- Products Grid -->
+            <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                <!-- Injected dynamically via JS -->
+            </div>
+
+            <!-- Empty State -->
+            <div id="no-results" class="hidden text-center py-20 bg-white rounded-3xl border border-stone-200/60 shadow-xs mt-4">
+                <div class="text-5xl mb-3">🥐</div>
+                <h4 class="font-serif font-bold text-lg text-stone-700">Produk tidak ditemukan</h4>
+                <p class="text-stone-400 text-sm mt-1">Coba gunakan kata kunci lain atau pilih kategori berbeda.</p>
+            </div>
+        </section>
+
+        <!-- About Store Section -->
+        <section id="tentang" class="bg-white rounded-3xl p-8 sm:p-14 border border-stone-200/60 shadow-sm grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+            <div class="space-y-4">
+                <span class="text-xs font-semibold uppercase tracking-wider text-brand-terracotta bg-brand-terracotta/10 px-3 py-1 rounded-full">Tentang Kami</span>
+                <h2 class="text-3xl font-serif font-bold text-brand-dark">Dibuat dengan Ketulusan & Resep Otentik</h2>
+                <p class="text-brand-muted text-sm sm:text-base leading-relaxed">
+                    Dondonedip bermula dari dapur rumahan kecil di Malang pada tahun 2022 dengan kecintaan mendalam pada dunia baking. Kami percaya bahwa setiap gigitan kue manis mampu menciptakan senyuman dan menghangatkan momen kebersamaan Anda bersama orang terkasih.
+                </p>
+                <div class="grid grid-cols-2 gap-4 pt-4 border-t border-stone-100">
+                    <div>
+                        <span class="block font-serif font-bold text-2xl text-brand-terracotta">100%</span>
+                        <span class="text-xs text-brand-muted">Bahan Premium Alami</span>
+                    </div>
+                    <div>
+                        <span class="block font-serif font-bold text-2xl text-brand-terracotta">Fresh</span>
+                        <span class="text-xs text-brand-muted">Dipanggang Setiap Hari</span>
+                    </div>
+                </div>
+            </div>
+            <div class="grid grid-cols-2 gap-4">
+                <img src="bakery.jpeg" alt="Baking Process" class="w-full h-64 object-cover rounded-2xl shadow-md">
+                <img src="pastry.jpeg" alt="Fresh Pastry" class="w-full h-64 object-cover rounded-2xl shadow-md mt-8">
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="kontak" class="bg-gradient-to-br from-brand-accent/60 to-brand-pink/20 rounded-3xl p-8 sm:p-12 border border-stone-200/60 shadow-sm text-center max-w-4xl mx-auto">
+            <h2 class="text-2xl sm:text-3xl font-serif font-bold text-brand-dark mb-3">Punya Pertanyaan atau Pesanan Khusus?</h2>
+            <p class="text-brand-muted text-sm sm:text-base mb-6 max-w-xl mx-auto">Kami siap melayani pesanan hampers, kue ulang tahun, maupun katering acara spesial Anda.</p>
+            <a href="https://wa.me/6282141558477?text=Halo%20Dondonedip,%20saya%20ingin%20memesan%20kue%20custom." target="_blank" class="inline-flex items-center space-x-2 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold px-8 py-4 rounded-2xl shadow-md hover:shadow-lg transition">
+                <i class="fa-brands fa-whatsapp text-xl"></i>
+                <span>Hubungi WhatsApp Kami</span>
+            </a>
+        </section>
+
+    </main>
+
+    <!-- Cart Drawer / Side Panel -->
+    <div id="cart-drawer" class="fixed inset-0 z-50 overflow-hidden hidden">
+        <div id="cart-backdrop" class="absolute inset-0 bg-black/40 backdrop-blur-xs transition-opacity opacity-0"></div>
+        <div class="absolute inset-y-0 right-0 max-w-full flex pl-10">
+            <div id="cart-panel" class="w-screen max-w-md bg-white shadow-2xl flex flex-col transform translate-x-full transition-transform duration-300 ease-in-out">
+                
+                <!-- Cart Header -->
+                <div class="p-6 bg-stone-50 border-b border-stone-100 flex items-center justify-between">
+                    <div class="flex items-center space-x-2">
+                        <i class="fa-solid fa-bag-shopping text-brand-terracotta"></i>
+                        <h3 class="font-serif font-bold text-lg text-brand-dark">Keranjang Belanja</h3>
+                    </div>
+                    <button id="close-cart" class="w-8 h-8 rounded-full bg-white hover:bg-stone-100 flex items-center justify-center text-stone-500 transition shadow-xs border border-stone-200">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </div>
+
+                <!-- Cart Items List -->
+                <div id="cart-items-container" class="flex-1 overflow-y-auto p-6 space-y-4 divide-y divide-stone-100">
+                    <!-- Injected via JS -->
+                </div>
+
+                <!-- Cart Footer & Checkout -->
+                <div id="cart-footer" class="p-6 bg-stone-50 border-t border-stone-100 hidden">
+                    <div class="space-y-3 mb-6">
+                        <div class="flex justify-between text-stone-600 text-sm">
+                            <span>Subtotal</span>
+                            <span id="cart-subtotal" class="font-semibold text-stone-900">Rp 0</span>
+                        </div>
+                        <div class="flex justify-between text-stone-600 text-sm">
+                            <span>Layanan</span>
+                            <span class="text-emerald-600 font-medium">Gratis</span>
+                        </div>
+                        <div class="border-t border-stone-200 pt-3 flex justify-between text-base font-serif font-bold text-brand-dark">
+                            <span>Total Pembayaran</span>
+                            <span id="cart-total" class="text-brand-terracotta">Rp 0</span>
+                        </div>
+                    </div>
+
+                    <div class="space-y-3">
+                        <div>
+                            <label class="block text-xs font-semibold uppercase tracking-wider text-stone-500 mb-1">Catatan Pesanan (Opsional)</label>
+                            <input type="text" id="order-notes" placeholder="Contoh: Kurangi manis, bungkus pita merah" class="w-full px-3 py-2.5 text-sm bg-white border border-stone-200 rounded-xl focus:outline-none focus:ring-1 focus:ring-brand-terracotta">
+                        </div>
+                        <button id="whatsapp-checkout" class="w-full py-3.5 px-4 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold rounded-xl shadow-md hover:shadow-lg transition flex items-center justify-center space-x-2">
+                            <i class="fa-brands fa-whatsapp text-lg"></i>
+                            <span>Checkout via WhatsApp</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Empty Cart State -->
+                <div id="cart-empty-state" class="flex-1 flex flex-col items-center justify-center p-6 text-center">
+                    <div class="w-16 h-16 rounded-full bg-brand-accent/60 flex items-center justify-center text-2xl mb-3 text-brand-terracotta">🛒</div>
+                    <p class="font-serif font-semibold text-stone-700">Keranjang masih kosong</p>
+                    <p class="text-stone-400 text-sm mt-1">Yuk tambahkan menu manis favoritmu!</p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-stone-200/60 mt-16 py-12 text-stone-500 text-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+            <div class="space-y-3 md:col-span-2">
+                <div class="flex items-center space-x-2">
+                    <span class="text-xl">🍰</span>
+                    <span class="font-serif font-bold text-lg text-brand-dark">Dondonedip</span>
+                </div>
+                <p class="text-xs text-brand-muted leading-relaxed max-w-sm">
+                    Toko kue dan artisan dessert terbaik di Malang yang menyajikan kebahagiaan dalam setiap potongan manis.
+                </p>
+            </div>
+            <div>
+                <h4 class="font-semibold text-stone-800 mb-3 text-xs uppercase tracking-wider">Jam Operasional</h4>
+                <p class="text-xs text-stone-500 mb-1">Senin - Minggu</p>
+                <p class="text-xs font-medium text-stone-700">08.00 - 20.00 WIB</p>
+            </div>
+            <div>
+                <h4 class="font-semibold text-stone-800 mb-3 text-xs uppercase tracking-wider">Lokasi Toko</h4>
+                <p class="text-xs text-stone-500 leading-relaxed">
+                    Jl. Soekarno Hatta No. 45<br>Malang, Jawa Timur, Indonesia
+                </p>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 border-t border-stone-100 flex flex-col sm:flex-row items-center justify-between text-xs text-stone-400">
+            <p>&copy; 2026 Dondonedip Dessert Catalog. Hak cipta dilindungi.</p>
+            <div class="flex space-x-4 mt-3 sm:mt-0">
+                <a href="#" class="hover:text-brand-terracotta transition"><i class="fa-brands fa-instagram text-base"></i></a>
+                <a href="#" class="hover:text-brand-terracotta transition"><i class="fa-brands fa-whatsapp text-base"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript Application Logic -->
+    <script src="toko.js"></script>
+</body>
+</html>
